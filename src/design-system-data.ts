@@ -7,6 +7,7 @@ export interface DesignSystemItem {
   title: string;
   body: string;
   filePath: string;
+  source?: 'internal' | 'public'; // Optional field to indicate source
 }
 
 export interface DesignSystemCategory {
@@ -285,6 +286,12 @@ export const designSystemData: DesignSystemData = {
       title: 'Tabs',
       body: 'Tabbed interface components for organizing content.',
       filePath: 'docs/components/tabs.md'
+    },
+    'selections': {
+      title: 'Selections',
+      body: 'Internal component for selection interfaces.',
+      filePath: 'docs/components/selections.md',
+      source: 'internal'
     }
   },
   'coding-guides': {

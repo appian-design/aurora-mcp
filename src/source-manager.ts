@@ -144,7 +144,10 @@ export class SourceManager {
       }
 
       const [, owner, repo] = match;
-      const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+      
+      // Include submodule_path if specified
+      const basePath = source.submodule_path ? `${source.submodule_path}/` : '';
+      const url = `https://api.github.com/repos/${owner}/${repo}/contents/${basePath}${filePath}`;
       
       const headers: Record<string, string> = {
         'Accept': 'application/vnd.github.v3+json',

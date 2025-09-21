@@ -226,13 +226,18 @@ function applyEnvironmentOverrides(config: Config): Config {
     const internalOwner = loadEnvVariable("INTERNAL_GITHUB_OWNER") || githubOwner;
     const internalRepo = loadEnvVariable("INTERNAL_GITHUB_REPO") || "design-system-docs-internal";
     
+    // Preserve existing internal config or create new one
+    const existingInternal = config.documentation.sources.internal;
+    
     config.documentation.sources.internal = {
       enabled: true,
-      path: "./docs-internal",
+      path: existingInternal?.path || "./docs-internal",
       repo: `https://github.com/${internalOwner}/${internalRepo}.git`,
-      branch: "main",
-      priority: 2,
+      branch: existingInternal?.branch || "main",
+      priority: existingInternal?.priority || 2,
       auth_required: true,
+      // Preserve submodule_path from YAML config
+      ...(existingInternal?.submodule_path && { submodule_path: existingInternal.submodule_path }),
     };
   }
 

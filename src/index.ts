@@ -190,7 +190,10 @@ server.tool(
     includeInternal: z.boolean().optional().describe("Include internal documentation components (default: false)"),
     sourceOnly: z.enum(["public", "internal", "all"]).optional().describe("Filter by specific source"),
   },
-  async ({ category, includeInternal = false, sourceOnly }) => {
+  async ({ category, includeInternal, sourceOnly }) => {
+    // Default to including internal if internal source is enabled
+    const defaultIncludeInternal = sourceManager.getSourceStatus().some(s => s.name === 'internal' && s.enabled);
+    const shouldIncludeInternal = includeInternal !== undefined ? includeInternal : defaultIncludeInternal;
     const normalizedCategory = category.toLowerCase();
     
     if (!(normalizedCategory in designSystemData)) {
@@ -218,7 +221,7 @@ server.tool(
       }
       
       // Apply access control
-      if (sourcedContent.source === 'internal' && !includeInternal) {
+      if (sourcedContent.source === 'internal' && !shouldIncludeInternal) {
         continue; // Skip internal content when not requested
       }
       
@@ -235,7 +238,7 @@ server.tool(
     }
     
     if (items.length === 0) {
-      const accessNote = !includeInternal ? " (use includeInternal=true to see internal components)" : "";
+      const accessNote = !shouldIncludeInternal ? " (use includeInternal=true to see internal components)" : "";
       return {
         content: [
           {
