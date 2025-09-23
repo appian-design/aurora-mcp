@@ -45,8 +45,9 @@ Generate a high-quality, professional-level interface using Appian SAIL for the 
 ## Design System MCP Usage and Outputs
 
 - Use the design system MCP to generate an interface for each test case
-- When calling the MCP, start at the high level and work down based on what is needed for a given interface: layouts, patterns, then components
-- After thinking about how to generate each interface, review the sail-coding-guidance and accessibility checklist to avoid basic errors
+- IMPORTANT: Start by exploring available categories (layouts, patterns, components) to understand what's available
+- Work from high-level to specific: first identify relevant layouts, then supporting patterns, finally individual components
+- After selecting design system elements, review the sail-coding-guidance and accessibility checklist to avoid basic errors
 - IMPORTANT: Only use SAIL functions and syntax that are represented in the design system; don't make assumptions
 - Generate each interface in a separate .txt file
 - Don't include comments in the output file unless absolutely necessary
@@ -57,27 +58,22 @@ Generate a high-quality, professional-level interface using Appian SAIL for the 
 **1. KPI Dashboard**
 - **User Story:** As a member services manager, I want to see real-time application processing metrics, so that I can identify bottlenecks and allocate staff effectively.
 - **Sample Data:** Daily application volumes (150-200/month), processing times by stage, completion rates, staff performance metrics, compliance screening results
-- **Expected Enhancement:** layouts/dashboards.md architecture + patterns/key-performance-indicators + patterns/charts
 
 **2. Multi-step Application Wizard**
 - **User Story:** As a new member, I want to complete my account application in guided steps with progress tracking, so that I can apply outside business hours and save my progress.
 - **Sample Data:** Account types (Essential Checking, Business Advantage, Youth Savings), required documents by product type, identity verification steps, fee structures
-- **Expected Enhancement:** layouts/forms.md wizard patterns + patterns/document-cards + professional styling
 
 **3. Work Queue Landing Page**
 - **User Story:** As a member services rep, I want to see my daily work queue with application priorities and completion status, so that I can process ready applications efficiently.
 - **Sample Data:** Application queue (20-30 pending), completion percentages, priority indicators (new business, existing member), action items, SLA targets
-- **Expected Enhancement:** layouts/landing-pages.md dense UI + patterns/banners + professional navigation
 
 **4. Document Management Interface**
 - **User Story:** As a member services rep, I want to review all uploaded documents for an application in one interface, so that I can verify completeness and process approvals quickly.
 - **Sample Data:** Document types (ID, proof of address, business license, bank statements), upload status, OCR extraction results, compliance flags
-- **Expected Enhancement:** patterns/document-cards + patterns/document-summary + professional layouts
 
 **5. Communication/Notes Interface**
 - **User Story:** As a member services rep, I want to track all communication with a member about their application, so that any team member can provide consistent service.
 - **Sample Data:** Timeline of interactions, phone notes, email correspondence, document requests, member responses, internal comments
-- **Expected Enhancement:** patterns/comment-thread + professional user experience patterns
 
 ## Evaluation Criteria 
 
