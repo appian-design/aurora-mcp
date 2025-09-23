@@ -1,4 +1,29 @@
 import { SourceManager } from './source-manager.js';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// Load environment variables from .env file
+function loadEnvVariable(variableName: string): string {
+  const possiblePaths = [
+    join(process.cwd(), ".env"),
+    join(process.cwd(), "..", ".env"),
+  ];
+
+  for (const envPath of possiblePaths) {
+    try {
+      const envContent = readFileSync(envPath, "utf8");
+      const regex = new RegExp(`^${variableName}=(.+)`, 'm');
+      const match = envContent.match(regex);
+      if (match) {
+        return match[1].trim();
+      }
+    } catch (error) {
+      // Continue to next path
+    }
+  }
+
+  return process.env[variableName] || "";
+}
 
 // Simple test runner
 function test(name: string, fn: () => void | Promise<void>) {
@@ -80,7 +105,8 @@ await test('getContent handles missing files gracefully', async () => {
 })();
 
 // Test 5: Source manager with internal docs enabled
-if (process.env.INTERNAL_DOCS_TOKEN) {
+const internalDocsToken = loadEnvVariable("INTERNAL_DOCS_TOKEN");
+if (internalDocsToken) {
   await test('SourceManager works with internal docs enabled', () => {
     process.env.ENABLE_INTERNAL_DOCS = 'true';
     
