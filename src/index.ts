@@ -3,7 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { designSystemData, DesignSystemItem, GITHUB_CONFIG } from "./design-system-data.js";
 import { SourceManager, type SourcedContent } from "./source-manager.js";
-import { GoogleDocsIntegration } from "./google-docs-integration.js";
+import { GoogleDocsSimple } from "./google-docs-simple.js";
 
 // Interface for parsed markdown content
 interface ParsedMarkdown {
@@ -99,14 +99,9 @@ const server = new McpServer({
 // Initialize source manager
 const sourceManager = new SourceManager();
 
-// Initialize Google Docs integration if enabled
-let googleDocsIntegration: GoogleDocsIntegration | null = null;
-if (process.env.ENABLE_GOOGLE_DOCS === 'true' && process.env.GOOGLE_DOCS_DOCUMENT_ID) {
-  googleDocsIntegration = new GoogleDocsIntegration({
-    documentId: process.env.GOOGLE_DOCS_DOCUMENT_ID,
-    serviceAccountKey: process.env.GOOGLE_SERVICE_ACCOUNT_KEY
-  });
-}
+// Initialize Google Docs simple integration (always enabled for POC)
+let googleDocsIntegration: GoogleDocsSimple | null = null;
+googleDocsIntegration = new GoogleDocsSimple('dummy-id'); // POC uses fallback content
 
 // Helper function to get SAIL guidance
 async function getSailGuidance(): Promise<string> {
@@ -386,8 +381,8 @@ server.tool(
       response += `## Content\n\n${sourcedContent.content}`;
     }
     
-    // Add Google Docs content guidelines if available
-    if (googleDocsIntegration) {
+    // Add Google Docs content guidelines if available and user has internal access
+    if (googleDocsIntegration && includeInternal) {
       try {
         const contentGuideline = await googleDocsIntegration.getGuidelineForComponent(normalizedComponentName);
         if (contentGuideline) {
