@@ -124,168 +124,183 @@ export const designSystemData: DesignSystemData = {
   branding: {
     'logo-and-favicon': {
       title: 'Logo and Favicon',
-      body: 'Guidelines for using logos and favicons consistently across applications.',
+      body: 'Use the Appian logo and favicon to support branding guidelines.',
       filePath: 'docs/branding/logo-and-favicon.md'
     },
     'colors': {
       title: 'Colors',
-      body: 'Color palette and usage guidelines for the design system.',
+      body: 'The following is the complete color palette with named colors and their corresponding hex codes:',
       filePath: 'docs/branding/colors.md'
     },
     'icons': {
       title: 'Icons',
-      body: 'Icon library and usage guidelines.',
+      body: 'The following icons are available for use in Appian Solutions. Icons are organized by category to help you select the most appropriate icon for your use case.',
       filePath: 'docs/branding/icons.md'
     },
     'typography': {
       title: 'Typography',
-      body: 'Typography scale, fonts, and text styling guidelines.',
+      body: 'Guidance on heading styles and how to use them in your interfaces',
       filePath: 'docs/branding/typography.md'
     },
     'approach-to-ai': {
       title: 'Approach to AI',
-      body: 'Guidelines for incorporating AI elements in design.',
+      body: 'The UX of AI in Appian Solutions',
       filePath: 'docs/branding/approach-to-ai.md'
     }
   },
   'content-style-guide': {
     'voice-and-tone': {
-      title: 'Voice and Tone',
-      body: 'Guidelines for consistent voice and tone across content.',
+      title: 'Voice and Tone Principles',
+      body: 'Content guidance for Appian Solution UIs',
       filePath: 'docs/content-style-guide/voice-and-tone.md'
     }
   },
   accessibility: {
     'checklist': {
       title: 'Accessibility Checklist',
-      body: 'Comprehensive checklist for ensuring accessible design and development.',
+      body: 'Guidance for how to make your interfaces accessible',
       filePath: 'docs/accessibility/checklist.md'
     }
   },
   layouts: {
     'dashboards': {
       title: 'Dashboards',
-      body: 'Layout patterns for dashboard interfaces.',
+      body: 'Provide actionable insights from business data',
       filePath: 'docs/layouts/dashboards.md'
     },
     'empty-states': {
       title: 'Empty States',
-      body: 'Layout guidance for empty state screens.',
+      body: 'Used to depict when the UI has no content to display. Empty states can be used to communicate intent and action with your user. A well designed empty state makes a great first impression, guides the user so that they complete their tasks intuitively and minimizes confusion.',
       filePath: 'docs/layouts/empty-states.md'
     },
     'forms': {
       title: 'Forms',
-      body: 'Form layout patterns and best practices.',
+      body: 'Facilitate user input by using the appropriate form style and input types for each scenario',
       filePath: 'docs/layouts/forms.md'
     },
     'grids': {
       title: 'Grids',
-      body: 'Grid system and layout structures.',
+      body: 'Display tabular information in a scannable and digestible format',
       filePath: 'docs/layouts/grids.md'
     },
     'landing-pages': {
       title: 'Landing Pages',
-      body: 'Layout patterns for landing and marketing pages.',
+      body: '**Tailor Content to Target Users**',
       filePath: 'docs/layouts/landing-pages.md'
     },
     'messaging-module': {
       title: 'Messaging Module',
-      body: 'Layout for messaging and communication interfaces.',
+      body: '![](https://github.com/user-attachments/assets/c4a563e1-fb73-4ac3-8233-44b4182c5f9d)',
       filePath: 'docs/layouts/messaging-module.md'
     },
     'pane-layouts': {
       title: 'Pane Layouts',
-      body: 'Multi-pane layout patterns for complex interfaces.',
+      body: 'Use `a!PaneLayout()` to display independently scrolling sections within the interface',
       filePath: 'docs/layouts/pane-layouts.md'
     },
     'record-views': {
       title: 'Record Views',
-      body: 'Layout patterns for viewing and editing records.',
+      body: 'Display information about a record in an interface',
       filePath: 'docs/layouts/record-views.md'
     }
   },
   patterns: {
     'banners': {
       title: 'Banners',
-      body: 'Banner patterns for important announcements and alerts.',
+      body: 'Banners are visual elements used to display important information or messages to users',
       filePath: 'docs/patterns/banners.md'
     },
     'calendar-widget': {
       title: 'Calendar Widget',
-      body: 'Calendar interface patterns and interactions.',
+      body: 'Calendar Widgets are used to display a calendar / scheduling interaction',
       filePath: 'docs/patterns/calendar-widget.md'
+    },
+    'cards-as-choices': {
+      title: 'Cards as Choices',
+      body: 'Cards as choices present a set of distinct options to a user in a visually engaging, easily scannable format. This pattern serves as an alternative to radio buttons or dropdowns, especially when choices benefit from descriptive text, icons, or images.',
+      filePath: 'docs/patterns/cards-as-choices.md'
     },
     'charts': {
       title: 'Charts',
-      body: 'Data visualization and chart patterns.',
+      body: 'Charts can be a useful tool in interfaces to get a high level view of data and the state of processes in a visual manner.',
       filePath: 'docs/patterns/charts.md'
     },
     'comment-thread': {
       title: 'Comment Thread',
-      body: 'Comment and discussion thread patterns.',
+      body: 'Comment threads display a chronological list of messages from different users on a single record',
       filePath: 'docs/patterns/comment-thread.md'
     },
     'document-summary': {
       title: 'Document Summary',
-      body: 'Document summary and preview patterns.',
+      body: 'Allow users to preview a document while easily scanning for relevant document details and actions',
       filePath: 'docs/patterns/document-summary.md'
     },
     'document-cards': {
       title: 'Document Cards',
-      body: 'Card patterns for displaying document information.',
+      body: 'Cards that represent documents and their respective actions',
       filePath: 'docs/patterns/document-cards.md'
     },
     'inline-dialog': {
       title: 'Inline Dialog',
-      body: 'Inline dialog and contextual popup patterns.',
+      body: 'Inline Dialogs are used to quickly perform an action on item in a list with at most 3 to 4 form fields. Avoid using this pattern for lists that may have a long list of fields. In those cases, use a dialog instead.',
       filePath: 'docs/patterns/inline-dialog.md'
     },
     'key-performance-indicators': {
       title: 'Key Performance Indicators',
-      body: 'KPI display and dashboard patterns.',
+      body: 'KPIs or Key Performance Indicators are meant to show a quick and high level snapshot of organizational performance over time or in meeting their measurable goals.',
       filePath: 'docs/patterns/key-performance-indicators.md'
     },
     'notifications': {
       title: 'Notifications',
-      body: 'Notification patterns for system messages and alerts.',
+      body: 'Notifications are used to inform users about events in a solution',
       filePath: 'docs/patterns/notifications.md'
     },
     'pick-list': {
       title: 'Pick List',
-      body: 'Selection and pick list interface patterns.',
+      body: 'Pick Lists are used on a form to allow users to select one or more items from a long list and additional metadata is helpful',
       filePath: 'docs/patterns/pick-list.md'
     }
   },
   components: {
     'breadcrumbs': {
       title: 'Breadcrumbs',
-      body: 'Navigation breadcrumb components for showing hierarchy.',
+      body: 'Breadcrumbs display the user\'s current location within the application\'s hierarchy, allowing them to navigate back to higher-level pages.',
       filePath: 'docs/components/breadcrumbs.md'
     },
+    'buttons': {
+      title: 'Buttons',
+      body: 'A button allows users to trigger an action, such as submitting a form, opening a dialog, or navigating to another page.',
+      filePath: 'docs/components/buttons.md'
+    },
     'cards': {
-      title: 'Cards',
-      body: 'Card components for displaying grouped content.',
+      title: 'Cards Guidance',
+      body: 'Cards are containers used to group content together. They allow the user to view information and take actions.',
       filePath: 'docs/components/cards.md'
     },
     'confirmation-dialog': {
       title: 'Confirmation Dialog',
-      body: 'Modal dialog components for confirmations.',
+      body: 'Confirmation dialogs are used to present the user with a directive action to prevent adverse situations',
       filePath: 'docs/components/confirmation-dialog.md'
     },
     'milestones': {
       title: 'Milestones',
-      body: 'Milestone and progress indicator components.',
+      body: 'Wizard milestones provide a guided experience to help users complete their tasks. Milestones should clearly identify each step in the process as well as the user\'s progress through those steps.',
       filePath: 'docs/components/milestones.md'
     },
     'more-less-link': {
       title: 'More / Less Link',
-      body: 'Expandable content toggle components.',
+      body: 'More / Less Links are used to display a certain amount of text content and provide a link for the user to expand and view additional information. It prevents clutter in an interface that might be prone to long text.',
       filePath: 'docs/components/more-less-link.md'
     },
     'tabs': {
       title: 'Tabs',
-      body: 'Tabbed interface components for organizing content.',
+      body: 'Tabs are used to navigate between alternate views within a user interface',
       filePath: 'docs/components/tabs.md'
+    },
+    'tags': {
+      title: 'Tags',
+      body: 'Tags are visual indicators used to highlight notable attributes of items and draw viewer attention to important characteristics. They provide quick, scannable context without overwhelming the interface.',
+      filePath: 'docs/components/tags.md'
     },
     'selections': {
       title: 'Selections',
