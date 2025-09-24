@@ -3,6 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { designSystemData, DesignSystemItem, GITHUB_CONFIG } from "./design-system-data.js";
 import { SourceManager, type SourcedContent } from "./source-manager.js";
+import { GoogleDocsIntegration } from "./google-docs-integration.js";
 
 // Interface for parsed markdown content
 interface ParsedMarkdown {
@@ -97,6 +98,15 @@ const server = new McpServer({
 
 // Initialize source manager
 const sourceManager = new SourceManager();
+
+// Initialize Google Docs integration if enabled
+let googleDocsIntegration: GoogleDocsIntegration | null = null;
+if (process.env.ENABLE_GOOGLE_DOCS === 'true' && process.env.GOOGLE_DOCS_DOCUMENT_ID) {
+  googleDocsIntegration = new GoogleDocsIntegration({
+    documentId: process.env.GOOGLE_DOCS_DOCUMENT_ID,
+    serviceAccountKey: process.env.GOOGLE_SERVICE_ACCOUNT_KEY
+  });
+}
 
 // Helper function to get SAIL guidance
 async function getSailGuidance(): Promise<string> {
@@ -374,6 +384,18 @@ server.tool(
     // If no sections found, show full content
     if (!parsedContent.designSection && !parsedContent.developmentSection) {
       response += `## Content\n\n${sourcedContent.content}`;
+    }
+    
+    // Add Google Docs content guidelines if available
+    if (googleDocsIntegration) {
+      try {
+        const contentGuideline = await googleDocsIntegration.getGuidelineForComponent(normalizedComponentName);
+        if (contentGuideline) {
+          response += `\n\n## UX Content Guidelines\n\n${contentGuideline}`;
+        }
+      } catch (error) {
+        console.error('Error fetching Google Docs content:', error);
+      }
     }
     
     // Auto-include SAIL guidance for relevant categories
