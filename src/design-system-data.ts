@@ -144,7 +144,7 @@ export const designSystemData: DesignSystemData = {
     },
     'approach-to-ai': {
       title: 'Approach to AI',
-      body: 'The UX of AI in Appian Solutions',
+      body: 'Guidelines for incorporating AI elements in app design',
       filePath: 'docs/branding/approach-to-ai.md'
     }
   },
@@ -185,12 +185,12 @@ export const designSystemData: DesignSystemData = {
     },
     'landing-pages': {
       title: 'Landing Pages',
-      body: '**Tailor Content to Target Users**',
+      body: 'Personalized home pages to show the most important content and actions for users',
       filePath: 'docs/layouts/landing-pages.md'
     },
     'messaging-module': {
       title: 'Messaging Module',
-      body: '![](https://github.com/user-attachments/assets/c4a563e1-fb73-4ac3-8233-44b4182c5f9d)',
+      body: 'Tool used to communicate with internal users. Good for when you need to search, have multiple threads, and attach multiple attachments.',
       filePath: 'docs/layouts/messaging-module.md'
     },
     'pane-layouts': {
