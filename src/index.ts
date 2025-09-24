@@ -3,6 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { designSystemData, DesignSystemItem, GITHUB_CONFIG } from "./design-system-data.js";
 import { SourceManager, type SourcedContent } from "./source-manager.js";
+import { GoogleDocsSimple } from "./google-docs-simple.js";
 
 // Interface for parsed markdown content
 interface ParsedMarkdown {
@@ -97,6 +98,10 @@ const server = new McpServer({
 
 // Initialize source manager
 const sourceManager = new SourceManager();
+
+// Initialize Google Docs simple integration (always enabled for POC)
+let googleDocsIntegration: GoogleDocsSimple | null = null;
+googleDocsIntegration = new GoogleDocsSimple('dummy-id'); // POC uses fallback content
 
 // Helper function to get SAIL guidance
 async function getSailGuidance(): Promise<string> {
@@ -374,6 +379,18 @@ server.tool(
     // If no sections found, show full content
     if (!parsedContent.designSection && !parsedContent.developmentSection) {
       response += `## Content\n\n${sourcedContent.content}`;
+    }
+    
+    // Add Google Docs content guidelines if available and user has internal access
+    if (googleDocsIntegration && includeInternal) {
+      try {
+        const contentGuideline = await googleDocsIntegration.getGuidelineForComponent(normalizedComponentName);
+        if (contentGuideline) {
+          response += `\n\n## UX Content Guidelines\n\n${contentGuideline}`;
+        }
+      } catch (error) {
+        console.error('Error fetching Google Docs content:', error);
+      }
     }
     
     // Auto-include SAIL guidance for relevant categories
