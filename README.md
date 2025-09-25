@@ -2,6 +2,41 @@
 
 This is a Model Context Protocol (MCP) server that provides access to Appian's design system documentation through GitHub repositories. It supports both public and internal documentation sources, allowing LLMs like Claude to query and explore design system components, layouts, and patterns with appropriate access controls.
 
+## 🔗 Related Resources
+
+- **Aurora Design System Documentation**: [appian-design/aurora](https://github.com/appian-design/aurora) - The source repository for design system documentation
+- **Live Documentation Site**: [https://appian-design.github.io/aurora/](https://appian-design.github.io/aurora/) - Browse the design system online
+
+## ⚡ Quickstart
+
+For technical users who want to get up and running quickly:
+
+1. **Clone and setup**:
+   ```bash
+   git clone https://github.com/appian-design/aurora-mcp.git
+   cd aurora-mcp
+   npm install
+   ```
+
+2. **Configure GitHub access**:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your GitHub token and repository details
+   ```
+
+3. **Build and configure MCP**:
+   ```bash
+   npm run build
+   # Add to ~/.aws/amazonq/mcp.json or Claude Desktop config
+   ```
+
+4. **Test the connection**:
+   ```bash
+   npm test
+   ```
+
+For detailed setup instructions, see the [Installation](#installation) section below.
+
 ## Features
 
 - **Multi-source support**: Access both public and internal documentation repositories
@@ -64,8 +99,6 @@ For access to both public and internal documentation:
 ### Advanced Configuration
 
 For detailed configuration options, see [Configuration Guide](docs/CONFIGURATION.md).
-
-See [Getting Started](GETTING_STARTED.md) for more detailed instructions on setting up to use with Amazon Q.
 
 ## Usage with Amazon Q (Appian-specific)
 
