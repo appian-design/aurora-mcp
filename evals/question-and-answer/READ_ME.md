@@ -1,0 +1,96 @@
+# Design System MCP Evaluation
+
+This repository contains tools for evaluating design system MCP answers against expected results using LLM-as-judge methodology.
+
+## Files
+
+- `EVALUATION_SET_1.md` - Questions to test
+- `EVALUATION_SET_1_OUTPUT.md` - MCP-generated answers
+- `EVALUATION_SET_1_ANSWER_KEY.md` - Expected answers
+- `simple_evaluate.py` - Evaluation script
+
+## Quick Start
+
+**Fully automated evaluation:**
+```bash
+# Default (uses EVALUATION_SET_1_OUTPUT.md)
+python3 simple_evaluate.py
+
+# Or with custom answer file
+python3 simple_evaluate.py NEW_ANSWERS.md
+```
+
+This automatically:
+- Creates evaluation prompt
+- Runs Q CLI evaluation 
+- Saves results with pass/fail analysis to `evaluation_results_with_pass_fail_[filename].txt`
+
+## Evaluation Process
+
+### Step 1: Prepare Files
+Ensure you have three files:
+- Questions (markdown list format)
+- MCP answers (numbered sections with `**Answer:**` format)
+- Expected answers (sections with `Expected Answer:` format)
+
+Create the MCP Answers file by asking the following prompt: Using the design system MCP, ask all of the questions in EVALUATION_SET_1.md and record your answers in a separate file called EVALUATION_SET_1_OUTPUT.md
+
+### Step 2: Run Automated Evaluation
+```bash
+python3 simple_evaluate.py [ANSWER_FILE.md]
+```
+
+This creates:
+- `evaluation_prompt_[filename].txt` - LLM prompt
+- `answer_comparison_[filename].json` - Structured comparison data
+- `evaluation_results_with_pass_fail_[filename].txt` - **Complete results with scores and pass/fail analysis**
+
+### Generated Results File Contains:
+- Individual question scores with explanations
+- Pass/fail status for each question (≥6 = Pass)
+- Summary statistics (average score, pass rate)
+- Score breakdown by performance level
+- List of critical failures
+
+## Scoring Scale
+
+- **10:** Perfect match in meaning and content
+- **8-9:** Very good match, captures main points with minor differences
+- **6-7:** Good match, captures key concepts but missing some details
+- **4-5:** Partial match, some correct information but significant gaps
+- **2-3:** Poor match, minimal correct information
+- **0-1:** No match or completely incorrect
+
+## Pass/Fail Criteria
+
+- **Pass:** Score ≥ 6/10
+- **Fail:** Score < 6/10
+
+## Example Output
+
+```
+Average Score: 8.33/10 (100.0% pass rate)
+Pass Rate: 100.0% (15 out of 15 questions passed)
+Failed Questions: 0
+```
+
+## Manual Evaluation (if needed)
+
+If automatic evaluation fails, you can run manually:
+```bash
+cat evaluation_prompt_[filename].txt | q chat --no-interactive > results.txt
+```
+
+## Troubleshooting
+
+- Ensure all three input files have matching question counts
+- Check markdown formatting matches expected patterns
+- Verify Q CLI is installed and accessible
+- Script automatically cleans ANSI escape codes from Q CLI output
+
+## Customization
+
+To modify evaluation criteria:
+1. Edit the scoring scale in `simple_evaluate.py`
+2. Adjust pass/fail threshold (currently 6/10)
+3. Modify prompt template for different evaluation focus
