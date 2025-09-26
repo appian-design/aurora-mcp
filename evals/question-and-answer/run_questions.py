@@ -29,7 +29,9 @@ def run_questions():
     with open('EVALUATION_SET_1.md', 'r') as f:
         questions = [line.strip()[2:] for line in f if line.startswith('- ')]
     
-    with open('EVALUATION_SET_1_OUTPUT.md', 'w') as output_file:
+    with open('EVALUATION_SET_1_OUTPUT.md', 'w') as output_file, \
+         open('EVALUATION_SET_1_FULL_OUTPUT.md', 'w') as full_output_file:
+        
         for i, question in enumerate(questions, 1):
             print(f"Processing question {i}...")
             
@@ -37,11 +39,14 @@ def run_questions():
             result = subprocess.run(['q', 'chat', '--no-interactive', '--trust-all-tools'], 
                                   input=prompt, text=True, capture_output=True)
             
-            output_file.write(f"## Question {i}\n\n")
-            output_file.write(f"**Question:** {question}\n\n")
             cleaned_output = clean_ansi(result.stdout)
-            final_message = extract_final_message(cleaned_output)
-            output_file.write(f"**Answer:** {final_message}\n\n")
+            
+            # Write to both files
+            for file, content in [(output_file, extract_final_message(cleaned_output)), 
+                                (full_output_file, cleaned_output)]:
+                file.write(f"## Question {i}\n\n")
+                file.write(f"**Question:** {question}\n\n")
+                file.write(f"**Answer:** {content}\n\n")
             
             if result.stderr:
                 print(f"Error on question {i}: {result.stderr}", file=sys.stderr)
