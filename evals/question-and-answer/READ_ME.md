@@ -29,11 +29,34 @@ This automatically:
 
 ### Step 1: Prepare Files
 Ensure you have three files:
-- Questions (markdown list format)
-- MCP answers (numbered sections with `**Answer:**` format)
+- Questions (markdown list format: `- Question text`)
+- MCP answers (sections starting with `## Question N` and containing `**Answer:**`)
 - Expected answers (sections with `Expected Answer:` format)
 
-Create the MCP Answers file by asking the following prompt: Using the design system MCP, ask all of the questions in EVALUATION_SET_1.md and record your answers in a separate file called EVALUATION_SET_1_OUTPUT.md
+**MCP Answers Format Requirements:**
+```markdown
+## Question 1
+
+**Question:** What should I use as a separator in breadcrumbs?
+
+**Answer:** Your answer text here...
+
+## Question 2
+
+**Question:** Next question text...
+
+**Answer:** Next answer text...
+```
+
+Create the MCP Answers file by running:
+```bash
+python3 run_questions.py
+```
+
+This script automatically:
+- Reads all questions from `EVALUATION_SET_1.md`
+- Asks each question using the design system MCP via Q CLI
+- Saves formatted answers to `EVALUATION_SET_1_OUTPUT.md`
 
 ### Step 2: Run Automated Evaluation
 ```bash
