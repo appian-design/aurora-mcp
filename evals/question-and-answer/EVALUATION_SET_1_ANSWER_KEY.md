@@ -1,4 +1,4 @@
-# Testing Components
+# Set 1: Testing Components
 
 1. ##  **Breadcrumbs**
 
@@ -128,7 +128,7 @@ Question: What colors should I use for my tags?
 
 Expected Answer: The background color should be \<color\> 1 and the content color should be the corresponding \<color\> 4\.
 
-# Testing Patterns
+# Set 2: Testing Patterns
 
 17. ## **Banners**
 
@@ -210,7 +210,7 @@ Question: I have a form where users need to see additional information about the
 
 Expected Answer: Use a picklist pattern
 
-# Testing Layouts
+# Set 3: Testing Layouts
 
 27. ## **Forms**
 
@@ -284,7 +284,7 @@ Question: Where should I put actions in a record view
 
 Expected Answer: Local actions should be next to where the data resides in a view. Global actions should be next to the record header.
 
-# Testing Branding
+# Set 4: Branding
 
 36. ## **Approach to AI**
 
