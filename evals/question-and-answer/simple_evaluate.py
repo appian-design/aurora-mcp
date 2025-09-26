@@ -136,12 +136,10 @@ def run_evaluation_and_save_results(prompt_file, base_name):
         avg_score = total_score / num_questions if num_questions > 0 else 0
         pass_rate = (pass_count / num_questions * 100) if num_questions > 0 else 0
         
-        # Create results content
+        # Create results content with summary first
         results_content = f"""LLM Evaluation Results - Design System MCP Answers (with Pass/Fail)
 
 Pass Threshold: 6/10 (answers scoring 6+ are considered passing)
-
-{chr(10).join(processed_lines)}
 
 SUMMARY:
 - Total Questions: {num_questions}
@@ -156,7 +154,11 @@ Score Breakdown:
 - Low Scores (0-5): {len([l for l in processed_lines if any(f' {i} ' in l for i in range(0, 6))])} questions [FAIL]
 
 Critical Failures:
-{chr(10).join([f"- {line.split(':')[0]}: {line.split(' - ')[1].split(' [')[0] if ' - ' in line else 'No explanation'}" for line in processed_lines if '[FAIL]' in line])}"""
+{chr(10).join([f"- {line.split(':')[0]}: {line.split(' - ')[1].split(' [')[0] if ' - ' in line else 'No explanation'}" for line in processed_lines if '[FAIL]' in line])}
+
+DETAILED RESULTS:
+
+{chr(10).join(processed_lines)}"""
         
         # Save results
         results_file = f'evaluation_results_with_pass_fail_{base_name}.txt'
