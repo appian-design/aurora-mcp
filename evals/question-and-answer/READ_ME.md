@@ -55,8 +55,9 @@ python3 run_questions.py
 
 This script automatically:
 - Reads all questions from `EVALUATION_SET_1.md`
-- Asks each question using the design system MCP via Q CLI
+- Asks each question using the design system MCP via Q CLI (with `--trust-all-tools` flag)
 - Saves formatted answers to `EVALUATION_SET_1_OUTPUT.md`
+- Saves complete Q CLI output to `EVALUATION_SET_1_FULL_OUTPUT.md` for debugging
 
 ### Step 2: Run Automated Evaluation
 ```bash
@@ -69,11 +70,11 @@ This creates:
 - `evaluation_results_with_pass_fail_[filename].txt` - **Complete results with scores and pass/fail analysis**
 
 ### Generated Results File Contains:
+- Summary statistics (average score, pass rate) shown first
+- Score breakdown by performance level  
+- List of critical failures
 - Individual question scores with explanations
 - Pass/fail status for each question (≥6 = Pass)
-- Summary statistics (average score, pass rate)
-- Score breakdown by performance level
-- List of critical failures
 
 ## Scoring Scale
 
