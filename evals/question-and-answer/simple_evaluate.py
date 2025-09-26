@@ -15,7 +15,7 @@ def parse_files(mcp_answers_file='EVALUATION_SET_1_OUTPUT.md'):
         content = f.read()
     
     mcp_answers = []
-    sections = re.split(r'## \d+\.', content)[1:]
+    sections = re.split(r'## Question \d+', content)[1:]
     
     for section in sections:
         lines = section.strip().split('\n')
