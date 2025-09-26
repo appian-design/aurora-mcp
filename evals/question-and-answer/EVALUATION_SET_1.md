@@ -1,43 +1,43 @@
-- What should I use as a separator in breadcrumbs?
-- Should I add a link on separators?
-- What case should text in buttons be?
-- What side of the screen should the primary button in a form be on? What about for the secondary button? Can I have more than one secondary button? 
-- What shape should my button be?
-- How should I style a destructive action?
-- What component should I use for icon-only actions?
-- Should I add a border or shadow to my card if the background color is #FFFFFF (White)?
-- How should I handle an empty state in a card when I have no data/information available?
-- What shape should my cards be?
-- When should I use an informational dialog vs. an action confirmation dialog?
-- When should I use vertical milestones vs. horizontal milestones?
-- What style should I use for milestones?
-- How many characters should I display before I show a more/less link?
-- Are tabs accessible?
-- What colors should I use for my tags?
-- Should I include a decorative bar on a flush banner?
-- What shape should my banner be?
-- What pattern should I use to have cards as choices when I need a lot of text to describe the choice?
-- When should I use a tooltip on my chart title?
-- Should I display users with their initials or their profile image?
-- What color should I use for the background of an inline dialog?
-- If I have 10 fields, should I use an inline dialog?
-- Is there a max number of KPIs I should display at once?
-- How should I indicate the number of notifications a user has?
-- I have a form where users need to see additional information about their selected items. How best can I do this pattern?
-- What title should I use when a user is modifying a form they’ve already completed?
-- Do I need a review step in my form?
-- I have a lot of fields to display in my form. They’re not all directly related to each other. Should I put them side by side to save space or in a single column?
-- I have a sortable grid. What border style should I use?
-- What batch size should I use for a full page grid?
-- How should text be aligned in grids? What about numbers?
-- Why should I use a pane layout?
-- Is there a max number of views a record should have?
-- Where should I put actions in a record view?
-- What color should I use for AI iconography?
-- If something on the screen uses AI, do I have to visually indicate that they’re using AI?
-- What’s the Sky 3 color?
-- What shades of pink do we have in our palette?
-- What color should I use for a negative background?
-- What icon should I use for remove?
-- What size text should I use for page titles?
+- What should I use as a separator in breadcrumbs?  
+- Should I add a link on separators in breadcrumbs?  
+- What case should text in buttons be?  
+- What side of the screen should the primary button in a form be on? What about for the secondary button? Can I have more than one secondary button?  
+- What shape should my button be?  
+- How should I style a destructive action?  
+- What component should I use for icon-only actions?  
+- Should I add a border or shadow to my card if the background color is \#FFFFFF (White)?  
+- How should I handle an empty state in a card when I have no data/information available?  
+- What shape should my cards be?  
+- When should I use an informational dialog vs. an action confirmation dialog?  
+- When should I use vertical milestones vs. horizontal milestones?  
+- What style should I use for milestones?  
+- How many characters should I display before I show a more/less link?  
+- Are tabs accessible?  
+- What colors should I use for my tags?  
+- Should I include a decorative bar on a flush banner?  
+- What shape should my banner be?  
+- What pattern should I use to have cards as choices when I need a lot of text to describe the choice?  
+- When should I use a tooltip on my chart title?  
+- Should I display users with their initials or their profile image?  
+- What color should I use for the background of an inline dialog?  
+- If I have 10 fields, should I use an inline dialog?  
+- Is there a max number of KPIs I should display at once?  
+- How should I indicate the number of notifications a user has?  
+- I have a form where users need to see additional information about their selected items. How best can I do this pattern?  
+- What title should I use when a user is modifying a form they’ve already completed?  
+- Do I need a review step in my form?  
+- I have a lot of fields to display in my form. They’re not all directly related to each other. Should I put them side by side to save space or in a single column?  
+- I have a sortable grid. What border style should I use?  
+- What batch size should I use for a full page grid?  
+- How should text be aligned in grids? What about numbers?  
+- Why should I use a pane layout?  
+- Is there a max number of views a record should have?  
+- Where should I put actions in a record view?  
+- What color should I use for AI iconography?  
+- If something on the screen uses AI, do I have to visually indicate that they’re using AI?  
+- What’s the Sky 3 color?  
+- What shades of pink do we have in our palette?  
+- What color should I use for a negative background?  
+- What icon should I use for remove?  
+- What size text should I use for page titles?  
 - What colors should my section labels be?
