@@ -104,8 +104,10 @@ def run_evaluation_and_save_results(prompt_file, base_name):
         # Find lines that contain scores (Q1:, Q2:, etc.)
         score_lines = []
         for line in lines:
-            if re.match(r'^Q\d+:', line.strip()):
-                score_lines.append(line.strip())
+            # Handle both regular lines and lines with "> " prefix
+            clean_line = line.strip().lstrip('> ')
+            if re.match(r'^Q\d+:', clean_line):
+                score_lines.append(clean_line)
         
         if not score_lines:
             print("No scores found in evaluation output")
