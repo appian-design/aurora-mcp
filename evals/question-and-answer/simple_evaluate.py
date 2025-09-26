@@ -137,6 +137,16 @@ def run_evaluation_and_save_results(prompt_file, base_name):
         pass_rate = (pass_count / num_questions * 100) if num_questions > 0 else 0
         
         # Create results content with summary first
+        newline = chr(10)
+        critical_failures = newline.join([f"- {line.split(':')[0]}: {line.split(' - ')[1].split(' [')[0] if ' - ' in line else 'No explanation'}" for line in processed_lines if '[FAIL]' in line])
+        detailed_results = newline.join(processed_lines)
+        
+        # Count scores by category
+        perfect_count = len([l for l in processed_lines if re.search(r'Q\d+:\s*10\s', l)])
+        high_count = len([l for l in processed_lines if re.search(r'Q\d+:\s*[89]\s', l)])
+        medium_count = len([l for l in processed_lines if re.search(r'Q\d+:\s*[67]\s', l)])
+        low_count = len([l for l in processed_lines if re.search(r'Q\d+:\s*[0-5]\s', l)])
+        
         results_content = f"""LLM Evaluation Results - Design System MCP Answers (with Pass/Fail)
 
 Pass Threshold: 6/10 (answers scoring 6+ are considered passing)
@@ -148,17 +158,17 @@ SUMMARY:
 - Failed Questions: {num_questions - pass_count}
 
 Score Breakdown:
-- Perfect Scores (10): {len([l for l in processed_lines if ' 10 ' in l])} questions [PASS]
-- High Scores (8-9): {len([l for l in processed_lines if ' 8 ' in l or ' 9 ' in l])} questions [PASS]
-- Medium Scores (6-7): {len([l for l in processed_lines if ' 6 ' in l or ' 7 ' in l])} questions [PASS]
-- Low Scores (0-5): {len([l for l in processed_lines if any(f' {i} ' in l for i in range(0, 6))])} questions [FAIL]
+- Perfect Scores (10): {perfect_count} questions [PASS]
+- High Scores (8-9): {high_count} questions [PASS]
+- Medium Scores (6-7): {medium_count} questions [PASS]
+- Low Scores (0-5): {low_count} questions [FAIL]
 
 Critical Failures:
-{chr(10).join([f"- {line.split(':')[0]}: {line.split(' - ')[1].split(' [')[0] if ' - ' in line else 'No explanation'}" for line in processed_lines if '[FAIL]' in line])}
+{critical_failures}
 
 DETAILED RESULTS:
 
-{chr(10).join(processed_lines)}"""
+{detailed_results}"""
         
         # Save results
         results_file = f'evaluation_results_with_pass_fail_{base_name}.txt'
